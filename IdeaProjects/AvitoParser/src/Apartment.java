@@ -15,8 +15,6 @@ class Apartment {
         this.rental = rental;                                   //
 
         String[] splitedTitle = title.split(", ");              // Разбиваем заголовок на 3 части (в качестве разделителя - запятая)
-        //for (int j = 0; j < splitedTitle.length; j++)
-            //System.out.println(splitedTitle[j]);
 
         if (splitedTitle[0].compareTo("Студия") == 0)           // Если первое слово в заголовке - Студия,
             rooms = 0;                                          // то количество комнат указываем как  0
@@ -39,6 +37,31 @@ class Apartment {
 
     public boolean equals(Apartment obj) {
         return (this.address.equals(obj.address) && this.storey == obj.storey &&    // По договоренности uid - совокупность адреса,
-                this.area == obj.area && this.rooms == obj.rooms);               // этажа, метража и количества комнат
+                this.area == obj.area && this.rooms == obj.rooms);                  // этажа, метража и количества комнат
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getRental() {
+        return rental;
+    }
+
 }
