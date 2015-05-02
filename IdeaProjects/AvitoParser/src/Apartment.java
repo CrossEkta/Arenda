@@ -1,11 +1,9 @@
-/**
- * Created by Game-Class5 on 01.05.2015.
- */
 package ParserPackage;
 
-public class Apartment {
-    String url, description, title, ownerName, address, rental;
-    int storey, area, rooms;
+class Apartment {
+    private final String url, description, title, ownerName, address, rental;
+    private final int storey, rooms;
+    private int area;
     boolean fromOwner;
 
     public Apartment(String url, String title, String ownerName, String address, String description, String rental) {
@@ -40,9 +38,7 @@ public class Apartment {
     }
 
     public boolean equals(Apartment obj) {
-        if (this.address.equals(obj.address) && this.storey == obj.storey &&    // По договоренности uid - совокупность адреса,
-                this.area == obj.area && this.rooms == obj.rooms)               // этажа, метража и количества комнат
-            return true;
-        return false;
+        return (this.address.equals(obj.address) && this.storey == obj.storey &&    // По договоренности uid - совокупность адреса,
+                this.area == obj.area && this.rooms == obj.rooms);               // этажа, метража и количества комнат
     }
 }
