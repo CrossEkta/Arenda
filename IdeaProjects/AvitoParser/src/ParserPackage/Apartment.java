@@ -1,12 +1,12 @@
 package ParserPackage;
 
 class Apartment {
-    private final String url, description, title, ownerName, address, rental;
-    private final int storey, rooms;
+    private final String url, description, title, ownerName, address;
+    private final int storey, rooms, rental;
     private int area;
     boolean fromOwner;
 
-    public Apartment(String url, String title, String ownerName, String address, String description, String rental) {
+    public Apartment(String url, String title, String ownerName, String address, String description, int rental) {
         this.url = url;                                         //
         this.title = title;                                     //
         this.ownerName = ownerName;                             //Заполнение строковых
@@ -60,7 +60,7 @@ class Apartment {
         return address;
     }
 
-    public String getRental() {
+    public int getRental() {
         return rental;
     }
 
