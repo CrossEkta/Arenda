@@ -3,8 +3,8 @@ CREATE TABLE apartment
   apartment_id NUMBER(8) NOT NULL CONSTRAINT apartment_pk PRIMARY KEY,
   url          VARCHAR2(100) NOT NULL, -- ссылка на сайте
   address      VARCHAR2(50) NOT NULL, -- адрес
-  description  VARCHAR2(50) NOT NULL, -- ?
-  rental       VARCHAR2(50) NOT NULL, -- ?
+  description  VARCHAR2(500) NOT NULL, -- описание
+  rental       NUMBER(5)    NOT NULL, -- стоимость аренды
   ownerName    VARCHAR2(50) NOT NULL, -- заявитель
   storey       NUMBER(2)    NOT NULL, -- этаж
   rooms        NUMBER(2)    NOT NULL, -- кол-во комнат
