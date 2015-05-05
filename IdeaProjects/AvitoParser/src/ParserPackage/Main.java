@@ -8,7 +8,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
@@ -46,16 +45,13 @@ public class Main {
     {
         Document document = Jsoup.connect(startUrl).get();
 
-        Elements cutedLinks = document.select("a[title^=Объявление «]");
-        HashSet<String> links = new HashSet<String>();
+        Elements elements = document.select("a[title^=Объявление «]");
 
-        for (Element e : cutedLinks) {
-            links.add("https://avito.ru" + e.attr("href"));
-        }
-
-        for (String s : links) {
+        for (Element e : elements) {
             int rental;
-            document = Jsoup.connect(s).get();
+            String url = e.attr("abs:href");
+
+            document = Jsoup.connect(url).get();
 
             String title = document.select("h1").text();
             String rentalString = document.select("span[itemprop=price]").text();
@@ -67,24 +63,38 @@ public class Main {
             try {
                 rental = AnalyzeRentalString(rentalString);
             }
-            catch (NumberFormatException e) {
+            catch (NumberFormatException exc) {
                 System.out.println("Код ошибки: #4890100");
-                System.out.println("Было выброшено исключение с текстом: " + e.getMessage());
+                System.out.println("Было выброшено исключение: " + exc.toString());
 
-                System.out.println("Программа не может правильно распознать сумму ежемесячного платежа в следующей строке:");
-                System.out.println(rentalString);
-                System.out.println("Пожалуйста, введите сумму ЕЖЕМЕСЯЧНОГО платежа из этой строки:");
-
-                Scanner sc = new Scanner(System.in);
-                rental = sc.nextInt();
+                rental = manualAnalyzeRentalString(rentalString);
             }
 
-            Apartment newObject = new Apartment(s, title, ownerName, address, description, rental);
+            Apartment newObject = new Apartment(url, title, ownerName, address, description, rental);
         }
     }
 
+    private static int manualAnalyzeRentalString(String rentalString) {
+        int rental;
+        System.out.println("Программа не может правильно распознать сумму ежемесячного платежа в следующей строке:");
+        System.out.println(rentalString);
+        System.out.println("Пожалуйста, введите сумму ЕЖЕМЕСЯЧНОГО платежа из этой строки:");
+
+        Scanner sc = new Scanner(System.in);
+        rental = sc.nextInt();
+        //System.out.println(rental);
+        sc.close();
+
+        return rental;
+    }
+
     private static int AnalyzeRentalString(String rentalString) {
+
+        if (rentalString.equalsIgnoreCase("Не указана"))
+            return 15000;
+
         String[] strings = rentalString.split(" | ");
+
         int dateModifier = 1;
         if (rentalString.endsWith("квартал"))
             dateModifier = 3;
