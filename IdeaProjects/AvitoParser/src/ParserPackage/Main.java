@@ -27,6 +27,7 @@ public class Main {
         }
 
         for (String s : links) {
+            int rental;
             document = Jsoup.connect(s).get();
 
             String title = document.select("h1").text();
@@ -36,7 +37,20 @@ public class Main {
             String description = document.select("div[class=description description-expanded]").text() + "\n" +
                     document.select("div[class=description description-text]").text();
 
-            int rental = AnalyzeRentalString(rentalString);
+            try {
+                rental = AnalyzeRentalString(rentalString);
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Код ошибки: #4890100");
+                System.out.println("Было выброшено исключение с текстом: " + e.getMessage());
+
+                System.out.println("Программа не может правильно распознать сумму ежемесячного платежа в следующей строке:");
+                System.out.println(rentalString);
+                System.out.println("Пожалуйста, введите сумму ЕЖЕМЕСЯЧНОГО платежа из этой строки:");
+
+                Scanner sc = new Scanner(System.in);
+                rental = sc.nextInt();
+            }
 
             Apartment newObject = new Apartment(s, title, ownerName, address, description, rental);
         }
@@ -47,57 +61,11 @@ public class Main {
     }
 
     private static int AnalyzeRentalString(String rentalString) {
-        int result;
-        Pattern smallMonthlyRentalPattern = Pattern.compile("^[1-9] [0-9]{3} руб. в месяц.*$");
-        Pattern midMonthlyRentalPattern = Pattern.compile("^[1-9][0-9] [0-9]{3} руб. в месяц.*$");
-        Pattern largeMonthlyRentalPattern = Pattern.compile("^[1-9][0-9]{2} [0-9]{3} руб. в месяц.*$");
+        String[] strings = rentalString.split(" | ");
+        int dateModifier = 1;
+        if (rentalString.endsWith("квартал"))
+            dateModifier = 3;
 
-        Pattern smallQuarterlyRentalPattern = Pattern.compile("^[1-9] [0-9]{3} руб. в квартал.*$");
-        Pattern midQuarterlyRentalPattern = Pattern.compile("^[1-9][0-9] [0-9]{3} руб. в квартал.*$");
-        Pattern largeQuarterlyRentalPattern = Pattern.compile("^[1-9][0-9]{2} [0-9]{3} руб. в квартал.*$");
-
-        Matcher m = smallMonthlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.charAt(0) + rentalString.substring(2, 5));
-            return result;
-        }
-
-        m = midMonthlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.substring(0,2) + rentalString.substring(3,6));
-            return result;
-        }
-
-        m = largeMonthlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.substring(0,3) + rentalString.substring(4,7));
-            return result;
-        }
-
-        m = smallQuarterlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.charAt(0) + rentalString.substring(2,5))/3;
-            return result;
-        }
-
-        m = midQuarterlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.substring(0,2) + rentalString.substring(3,6))/3;
-            return result;
-        }
-
-        m = largeQuarterlyRentalPattern.matcher(rentalString);
-        if (m.matches()) {
-            result = Integer.parseInt(rentalString.substring(0,3) + rentalString.substring(4,7))/3;
-            return result;
-        }
-        else {
-            Scanner s = new Scanner(System.in);
-            System.out.println("Программа не может правильно считать арендную плату, пожалуйста введите размер арендной платы за 1 месяц из следующей строки:");
-            System.out.println(rentalString);
-            result = s.nextInt();
-        }
-
-        return result;
+        return Integer.parseInt(strings[0].concat(strings[1]))/dateModifier;
     }
 }
