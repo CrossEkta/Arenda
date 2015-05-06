@@ -1,4 +1,5 @@
-Зависимости:
+﻿Зависимости:
 1) JSoup 
 http://jsoup.org/download
 2) ojdbc6
+http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html

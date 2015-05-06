@@ -1,18 +1,16 @@
 package ParserPackage;
 
+import CommonPackage.DataPack;
 import DBPackage.DBDriver;
 import DBPackage.JdbcOracleCon;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.sql.ResultSet;
+import java.util.HashMap;
 
 public class Main {
 
-    public static void main(String args[]) throws IOException{
+    public static void main(String args[]) {
         long startTime = System.nanoTime();
 
         String startUrl = "https://www.avito.ru/krasnoyarsk/kvartiry/sdam/na_dlitelnyy_srok?i=1&user=1";
