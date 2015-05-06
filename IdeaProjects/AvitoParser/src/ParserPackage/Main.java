@@ -1,12 +1,9 @@
 package ParserPackage;
 
-import CommonPackage.DataPack;
 import DBPackage.DBDriver;
 import DBPackage.JdbcOracleCon;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.HashMap;
 
 public class Main {
 

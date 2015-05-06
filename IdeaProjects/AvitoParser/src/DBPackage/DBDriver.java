@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 /**
  * Created by Elk on 05.05.2015.
- * Адаптер, умеет точно работать с Oracle, MySql
- * Расширены методы java.sql до нормального состояния
+ * Adapter, can work with Oracle, MySql
+ * Extended methods of java.sql to "good" state
  */
 public class DBDriver
 {
@@ -34,10 +34,9 @@ public class DBDriver
     }
 
     /***
-     * Выполнить запрос и вернуть значение первого столбца из первой строки
-     * @param sqlStatement - текст запроса
-     * @param param - параметры
-     * @return значение первого столбца из первой строки
+     * Execute the sql query and return value of first columns from first row
+     * @param sqlStatement - text the sql query
+     * @param param - parameteres
      * @throws Exception
      */
     public Object executeQueryFirst(String sqlStatement, HashMap<String, Object> param) throws Exception
@@ -54,9 +53,9 @@ public class DBDriver
     }
 
     /***
-     * Выпольнить запрос и вернуть ResultSet
-     * @param sqlStatement - текст запроса
-     * @param param - параметры
+     * Execute the sql query and return ResultSet
+     * @param sqlStatement - text the sql query
+     * @param param - parameteres
      * @return ResultSet
      * @throws Exception
      */
@@ -71,12 +70,11 @@ public class DBDriver
     }
 
     /***
-     *  Хитрый метод вызова запроса с параметрами
-     * параметры обозначаются символом ':'
-     * Пример SELECT * FROM table t WHERE t.id = :id
-     * @param sqlStatement - текст запроса
-     * @param param - параметры
-     * @return подготовленный запрос
+     *  Calling "tricky" method with parameteres
+     * The Parameteres are indicated by ':'
+     * Example: SELECT * FROM table t WHERE t.id = :id
+     * @param sqlStatement - text the sql query
+     * @param param - parameteres
      * @throws Exception
      */
     public PreparedStatement createStatement(String sqlStatement, HashMap<String, Object> param) throws Exception
