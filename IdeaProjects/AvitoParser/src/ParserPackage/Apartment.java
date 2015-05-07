@@ -8,6 +8,15 @@ class Apartment {
     boolean fromOwner, phone, balcony, furniture, fridge, ethernet;
 
     public Apartment(String url, String title, String ownerName, String address, String description,
+                     String material, Integer rental, Integer storey, Integer numberOfStoreys, Integer rooms,
+                     Double fullArea)
+    {
+        this(url, title, ownerName, address, description, "", material, "", "", "",
+             "", rental, storey, numberOfStoreys, rooms, fullArea, -1.0, -1.0, false,
+             false, false, false, false, false);
+    }
+
+    public Apartment(String url, String title, String ownerName, String address, String description,
                      String referencePoint, String material, String type, String layout, String WCtype,
                      String phoneNumber, Integer rental, Integer storey, Integer numberOfStoreys, Integer rooms,
                      Double fullArea, Double livingArea, Double kitchenArea, Boolean fromOwner, Boolean phone,

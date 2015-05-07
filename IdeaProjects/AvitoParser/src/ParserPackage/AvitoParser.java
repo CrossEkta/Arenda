@@ -85,9 +85,8 @@ public class AvitoParser implements IApartmentParser {
             storey = new Integer(storeyInfo[0]);                        // Вычленяем этаж из символов до разделителя
             numberOfStoreys = new Integer(storeyInfo[1]);
 
-            Apartment newObject = new Apartment(url, title, ownerName, address, description, "", type, "", "",
-                                                "", "", rental, storey, numberOfStoreys, rooms, (Double)fullArea, -1.0, -1.0, false,
-                                                false, false, false, false, false);
+            Apartment newObject = new Apartment(url, title, ownerName, address, description, type,
+                                                rental, storey, numberOfStoreys, rooms, fullArea);
 
             list.add(newObject);
 
