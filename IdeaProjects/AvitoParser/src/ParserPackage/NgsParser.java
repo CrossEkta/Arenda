@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Created by Game-Class5 on 06.05.2015.
  */
 public class NgsParser implements IApartmentParser {
-    private static String urlToParse = Global.getStartUrl(3);               //Global.getStartUrl(Integer type) with argument 3
+    private static String urlToParse = Global.getStartUrl(WebsiteType.NGS);               //Global.getStartUrl(Integer type) with argument 3
                                                                             //refers to ngs24.ru start url
     public NgsParser() {
 

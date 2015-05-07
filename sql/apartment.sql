@@ -13,6 +13,8 @@ CREATE TABLE apartment
   stamp           DATE      NOT NULL  -- время создания
 );
 
+CREATE SEQUENCE apartment_seq;
+
 CREATE TABLE apartment_tried
 (
   apartment_tried NUMBER(8) NOT NULL CONSTRAINT apartment_tried_pk PRIMARY KEY, 
@@ -22,3 +24,4 @@ CREATE TABLE apartment_tried
   user_name       VARCHAR2(20) NOT NULL  -- кто создал
 );
 
+CREATE SEQUENCE apartment_tried_seq;

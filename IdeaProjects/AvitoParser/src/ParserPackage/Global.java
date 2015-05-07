@@ -15,13 +15,14 @@ public class Global
     final static private String _24auStartUrl = " ";
     final static private String ngsStartUrl = "http://arenda.gilcom.ru/snyat/srok-dlitelniy/?on_page=25&by=_orderDate&order=DESC";
 
-    static public String getStartUrl(Integer type) {
+    static public String getStartUrl(WebsiteType type) {
+
         switch (type) {
-            case 1:
+            case AVITO:
                 return avitoStartUrl;
-            case 2:
+            case AU:
                 return _24auStartUrl;
-            case 3:
+            case NGS:
                 return ngsStartUrl;
             default:
                 return null;

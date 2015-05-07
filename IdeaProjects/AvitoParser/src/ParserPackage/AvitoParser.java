@@ -13,7 +13,7 @@ import java.util.Scanner;
  * Created by Game-Class5 on 05.05.2015.
  */
 public class AvitoParser implements IApartmentParser {
-    private static String urlToParse = Global.getStartUrl(1);               //Global.getStartUrl(Integer type) with argument 1
+    private static String urlToParse = Global.getStartUrl(WebsiteType.AVITO);               //Global.getStartUrl(Integer type) with argument 1
                                                                             //refers to avito.ru start url
     public AvitoParser() {
 
