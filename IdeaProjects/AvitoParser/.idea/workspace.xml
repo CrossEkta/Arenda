@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f45ec22-5bdc-4c58-8dca-8a1cf10db065" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Elk.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ParserPackage/WebsiteType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParserPackage/AvitoParser.java" afterPath="$PROJECT_DIR$/src/ParserPackage/AvitoParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParserPackage/Global.java" afterPath="$PROJECT_DIR$/src/ParserPackage/Global.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParserPackage/NgsParser.java" afterPath="$PROJECT_DIR$/src/ParserPackage/NgsParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../sql/apartment.sql" afterPath="$PROJECT_DIR$/../../sql/apartment.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../sql/phone.sql" afterPath="$PROJECT_DIR$/../../sql/phone.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AvitoParser.iws" />
@@ -1743,7 +1736,13 @@
       <option name="project" value="LOCAL" />
       <updated>1431000713542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add enum WebsiteType">
+      <created>1431001344105</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1431001344105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1792,7 +1791,8 @@
     <MESSAGE value="Add DBMethods" />
     <MESSAGE value="Edit comments" />
     <MESSAGE value="Edit constructor the Apartment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit constructor the Apartment" />
+    <MESSAGE value="Add enum WebsiteType" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add enum WebsiteType" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
